@@ -1,4 +1,4 @@
-package com.cydeo;
+package com.cydeo.day3;
 
 
 import io.restassured.RestAssured;
