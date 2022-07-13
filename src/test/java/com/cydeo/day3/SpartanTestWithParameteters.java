@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ public class SpartanTestWithParameteters {
     public static void init() {
 
         RestAssured.baseURI = "http://34.238.126.28:8000";
+
 
     }
 
