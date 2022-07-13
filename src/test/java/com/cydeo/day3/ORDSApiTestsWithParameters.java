@@ -1,11 +1,9 @@
 package com.cydeo.day3;
 
 import com.cydeo.utilities.DBUtils;
-import io.restassured.RestAssured;
+import com.cydeo.utilities.HRTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,20 +14,11 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ORDSApiTestsWithParameters {
+public class ORDSApiTestsWithParameters extends HRTestBase {
 
     private static Response response;
 
-    @BeforeAll
-    public static void init() {
-        RestAssured.baseURI = "http://34.238.126.28:1000/ords/hr";
-        DBUtils.createConnection();
-    }
 
-    @AfterAll
-    public static void tearDown(){
-        DBUtils.destroy();
-    }
 
     /*
         Given accept type is Json
