@@ -50,12 +50,12 @@ public class ORDSApiTestWithPath extends HRTestBase {
 
         // first way to get the second country name with jsonpath
         JsonPath jsonPath = response.jsonPath();
-        String seconCountry = jsonPath.getString("items[1].country_name");
-        System.out.println("seconCountry = " + seconCountry);
+        String secondCountry = jsonPath.getString("items[1].country_name");
+        System.out.println("secondCountry = " + secondCountry);
 
         // second way to get the second country name with jsonpath
         List<String> countryNames = jsonPath.getList("items.country_name");
-        System.out.println("seconCountry = " + countryNames.get(1));
+        System.out.println("secondCountry = " + countryNames.get(1));
 
         System.out.println("----------------------------\n");
 

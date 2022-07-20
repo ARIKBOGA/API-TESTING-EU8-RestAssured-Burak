@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DBUtils {
+public abstract class DBUtils {
     private static Connection connection;
     private static Statement statement;
     private static ResultSet resultSet;
