@@ -2,7 +2,6 @@ package com.cydeo.day7;
 
 import com.cydeo.pojo.Spartan;
 import com.cydeo.utilities.SpartanTestBase;
-import com.cydeo.utilities.SpartanUtils;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
@@ -58,7 +57,7 @@ public class SpartanPostRequestDemo extends SpartanTestBase {
 
     @Test
     public void postMethod2() {
-        Spartan spartan = SpartanUtils.getNewSpartan();
+        Spartan spartan = new Spartan();
         System.out.println(spartan);
         response = given().accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
@@ -80,7 +79,7 @@ public class SpartanPostRequestDemo extends SpartanTestBase {
 
         Spartan spartanPost = given().accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
-                .body(SpartanUtils.getNewSpartan())
+                .body(new Spartan())
                 .post("/api/spartans")
                 .then()
                 .statusCode(201)

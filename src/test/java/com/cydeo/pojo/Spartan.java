@@ -1,5 +1,6 @@
 package com.cydeo.pojo;
 
+import com.cydeo.utilities.POJOUtils;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,4 +16,9 @@ public class Spartan {
     private String gender;
     private long phone;
 
+    public Spartan() {
+        setName(POJOUtils.getName());
+        setGender(POJOUtils.getGender());
+        setPhone(POJOUtils.getPhoneNumber());
+    }
 }
