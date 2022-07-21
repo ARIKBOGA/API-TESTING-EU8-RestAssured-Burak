@@ -53,6 +53,7 @@ public class CybertekStudentPOJO {
                 .and().pathParam("id", posted.getStudentId())
                 .get("/student/{id}")
                 .then()
+                .statusCode(200)
                 .log().all()
                 .extract().jsonPath().getList("students", Student.class);
 
@@ -65,6 +66,22 @@ public class CybertekStudentPOJO {
         assertThat(posted.getLastName(), is(gotten.get(0).getLastName()));
         assertThat(posted.getMajor(), is(gotten.get(0).getMajor()));
 
+
+    }
+
+    @DisplayName("POST request with Multi Student")
+    @Test
+    public void multiStudentPost() {
+
+        for (int i = 0; i < 30; i++) {
+            Student student = given().accept(ContentType.JSON)
+                    .contentType(ContentType.JSON)
+                    .body(new Student())
+                    .post("/student/create")
+                    .then()
+                    .statusCode(200).extract().jsonPath().getObject("", Student.class);
+            System.out.println((i + 1) + ". " + student.getStudentId() + " - " + student.getFirstName() + " " + student.getLastName());
+        }
 
     }
 }

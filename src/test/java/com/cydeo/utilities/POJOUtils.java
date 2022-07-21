@@ -2,8 +2,6 @@ package com.cydeo.utilities;
 
 import com.github.javafaker.Faker;
 
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.Random;
 
 public abstract class POJOUtils {
