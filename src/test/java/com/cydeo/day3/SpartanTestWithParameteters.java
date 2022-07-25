@@ -1,6 +1,7 @@
 package com.cydeo.day3;
 
 
+import com.cydeo.utilities.ConfigurationReader;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -23,7 +24,7 @@ public class SpartanTestWithParameteters {
     @BeforeAll
     public static void init() {
 
-        RestAssured.baseURI = "http://54.234.226.200:8000";
+        RestAssured.baseURI = "http://" + ConfigurationReader.getProperty("EC2_IP") + ":8000";
 
 
     }
@@ -104,7 +105,7 @@ public class SpartanTestWithParameteters {
                 .when()
                 .get("/api/spartans/search");
 
-        assertEquals(200,response.statusCode());
+        assertEquals(200, response.statusCode());
         assertTrue(response.body().asString().contains("Female"));
         assertTrue(response.body().asString().contains("Janette"));
 
@@ -115,9 +116,9 @@ public class SpartanTestWithParameteters {
     @Test
     public void test4() {
 
-        Map<String,Object> queryMap = new HashMap<>();
-        queryMap.put("nameContains","e");
-        queryMap.put("gender","Female");
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("nameContains", "e");
+        queryMap.put("gender", "Female");
 
         response = given().log().all()
                 .accept(ContentType.JSON)
@@ -125,7 +126,7 @@ public class SpartanTestWithParameteters {
                 .when()
                 .get("/api/spartans/search");
 
-        assertEquals(200,response.statusCode());
+        assertEquals(200, response.statusCode());
         assertTrue(response.body().asString().contains("Female"));
         assertTrue(response.body().asString().contains("Janette"));
 

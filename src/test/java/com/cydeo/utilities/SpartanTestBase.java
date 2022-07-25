@@ -7,12 +7,14 @@ import static io.restassured.RestAssured.baseURI;
 
 public abstract class SpartanTestBase {
 
-    @BeforeAll
-    public static void init(){
-        //save baseurl inside this variable so that we don't need to type each http method.
-        baseURI = "http://54.234.226.200:8000";
+    private static final String IP = ConfigurationReader.getProperty("EC2_IP");
 
-        String dbUrl = "jdbc:oracle:thin:@54.234.226.200:1521:xe";
+    @BeforeAll
+    public static void init() {
+        //save baseurl inside this variable so that we don't need to type each http method.
+        baseURI = "http://" + IP + ":8000";
+
+        String dbUrl = "jdbc:oracle:thin:@" + IP + ":1521:xe";
         String dbUsername = "SP";
         String dbPassword = "SP";
 
@@ -20,11 +22,10 @@ public abstract class SpartanTestBase {
     }
 
     @AfterAll
-    public static void teardown(){
+    public static void teardown() {
 
         //DBUtils.destroy();
     }
-
 
 
 }

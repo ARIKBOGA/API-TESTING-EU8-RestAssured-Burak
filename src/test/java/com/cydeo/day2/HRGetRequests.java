@@ -1,5 +1,6 @@
 package com.cydeo.day2;
 
+import com.cydeo.utilities.ConfigurationReader;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -15,7 +16,7 @@ public class HRGetRequests {
     @BeforeAll
     public static void init() {
 
-        RestAssured.baseURI = "http://54.234.226.200:1000/ords/hr";
+        RestAssured.baseURI = "http://" + ConfigurationReader.getProperty("EC2_IP") + ":1000/ords/hr";
 
     }
 
@@ -42,9 +43,9 @@ public class HRGetRequests {
     public void test2() {
 
         Response response = given()
-                        .accept(ContentType.JSON)
-                        .when()
-                        .get("/regions/2");
+                .accept(ContentType.JSON)
+                .when()
+                .get("/regions/2");
 
         assertEquals(200, response.statusCode());
         assertEquals("application/json", response.contentType());

@@ -6,12 +6,15 @@ import org.junit.jupiter.api.BeforeAll;
 import static io.restassured.RestAssured.baseURI;
 
 public class SpartanAuthTestBase {
-    @BeforeAll
-    public static void init(){
-        //save baseurl inside this variable so that we don't need to type each http method.
-        baseURI = "http://54.234.226.200:7000";
 
-        String dbUrl = "jdbc:oracle:thin:@54.234.226.200:1521:xe";
+    private static final String IP = ConfigurationReader.getProperty("EC2_IP");
+
+    @BeforeAll
+    public static void init() {
+        //save baseurl inside this variable so that we don't need to type each http method.
+        baseURI = "http://" + IP + ":7000";
+
+        String dbUrl = "jdbc:oracle:thin:@" + IP + ":1521:xe";
         String dbUsername = "SP";
         String dbPassword = "SP";
 
@@ -19,7 +22,7 @@ public class SpartanAuthTestBase {
     }
 
     @AfterAll
-    public static void teardown(){
+    public static void teardown() {
 
         //DBUtils.destroy();
     }

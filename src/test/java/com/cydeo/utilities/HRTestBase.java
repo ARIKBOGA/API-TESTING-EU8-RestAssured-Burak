@@ -8,12 +8,12 @@ public abstract class HRTestBase {
 
     @BeforeAll
     public static void init() {
-        RestAssured.baseURI = "http://54.234.226.200:1000/ords/hr";
+        RestAssured.baseURI = "http://" + ConfigurationReader.getProperty("EC2_IP") + ":1000/ords/hr";
         DBUtils.createConnection();
     }
 
     @AfterAll
-    public static void tearDown(){
+    public static void tearDown() {
         DBUtils.destroy();
     }
 }

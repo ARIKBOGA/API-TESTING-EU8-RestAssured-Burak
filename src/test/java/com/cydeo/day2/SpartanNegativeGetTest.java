@@ -1,5 +1,6 @@
 package com.cydeo.day2;
 
+import com.cydeo.utilities.ConfigurationReader;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -13,7 +14,7 @@ public class SpartanNegativeGetTest {
 
     @BeforeAll
     public static void init() {
-        RestAssured.baseURI = "http://54.234.226.200:8000";
+        RestAssured.baseURI = "http://" + ConfigurationReader.getProperty("EC2_IP") + ":8000";
     }
 
 

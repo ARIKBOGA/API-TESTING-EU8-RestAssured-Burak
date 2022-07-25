@@ -1,6 +1,7 @@
 package com.cydeo.day5;
 
 
+import com.cydeo.utilities.ConfigurationReader;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class HamcrestMatchersApiTest {
                 .accept(ContentType.JSON)
                 .and().pathParam("id", 15)
                 .when()
-                .get("http://54.234.226.200:8000/api/spartans/{id}")
+                .get("http://" + ConfigurationReader.getProperty("EC2_IP") + ":8000/api/spartans/{id}")
                 .then()
                 .statusCode(200)
                 .and()
@@ -82,7 +83,7 @@ public class HamcrestMatchersApiTest {
                 .statusCode(200)
                 .and()
                 .body("teachers.firstName", hasItems("Leonel", "Andrii", "Latrisha"))
-                .body("teachers.lastName",everyItem(is(notNullValue())));
+                .body("teachers.lastName", everyItem(is(notNullValue())));
 
 
     }
