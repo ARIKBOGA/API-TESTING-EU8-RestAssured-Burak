@@ -1,5 +1,6 @@
 package com.cydeo.day2;
 
+import com.cydeo.utilities.ConfigurationReader;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SpartanGetRequests {
 
-    private static final String BASE_URL = "http://34.238.126.28:8000";
+    private static final String BASE_URL = "http://"+ ConfigurationReader.getProperty("") +":8000";
 
 
     //    Given Accept type application/json

@@ -15,7 +15,7 @@ public class HRGetRequests {
     @BeforeAll
     public static void init() {
 
-        RestAssured.baseURI = "http://34.238.126.28:1000/ords/hr";
+        RestAssured.baseURI = "http://3.86.210.167:1000/ords/hr";
 
     }
 

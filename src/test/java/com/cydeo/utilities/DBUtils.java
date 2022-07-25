@@ -23,7 +23,7 @@ public abstract class DBUtils {
         }
     }
 
-    public static void createConnection(String dbUrl,String dbUsername,String dbPassword) {
+    public static void createConnection(String dbUrl, String dbUsername, String dbPassword) {
 
         try {
             connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
@@ -32,6 +32,7 @@ public abstract class DBUtils {
             e.printStackTrace();
         }
     }
+
     public static void destroy() {
         try {
             if (resultSet != null) {
@@ -47,41 +48,41 @@ public abstract class DBUtils {
             e.printStackTrace();
         }
     }
+
     /**
-     *
      * @param query
      * @return returns a single cell value. If the results in multiple rows and/or
-     *         columns of data, only first column of the first row will be returned.
-     *         The rest of the data will be ignored
+     * columns of data, only first column of the first row will be returned.
+     * The rest of the data will be ignored
      */
     public static Object getCellValue(String query) {
         return getQueryResultList(query).get(0).get(0);
     }
+
     /**
-     *
      * @param query
      * @return returns a list of Strings which represent a row of data. If the query
-     *         results in multiple rows and/or columns of data, only first row will
-     *         be returned. The rest of the data will be ignored
+     * results in multiple rows and/or columns of data, only first row will
+     * be returned. The rest of the data will be ignored
      */
     public static List<Object> getRowList(String query) {
         return getQueryResultList(query).get(0);
     }
+
     /**
-     *
      * @param query
      * @return returns a map which represent a row of data where key is the column
-     *         name. If the query results in multiple rows and/or columns of data,
-     *         only first row will be returned. The rest of the data will be ignored
+     * name. If the query results in multiple rows and/or columns of data,
+     * only first row will be returned. The rest of the data will be ignored
      */
     public static Map<String, Object> getRowMap(String query) {
         return getQueryResultMap(query).get(0);
     }
+
     /**
-     *
      * @param query
      * @return returns query result in a list of lists where outer list represents
-     *         collection of rows and inner lists represent a single row
+     * collection of rows and inner lists represent a single row
      */
     public static List<List<Object>> getQueryResultList(String query) {
         executeQuery(query);
@@ -102,8 +103,8 @@ public abstract class DBUtils {
         }
         return rowList;
     }
+
     /**
-     *
      * @param query
      * @param column
      * @return list of values of a single column from the result set
@@ -123,12 +124,12 @@ public abstract class DBUtils {
         }
         return rowList;
     }
+
     /**
-     *
      * @param query
      * @return returns query result in a list of maps where the list represents
-     *         collection of rows and a map represents represent a single row with
-     *         key being the column name
+     * collection of rows and a map represents represent a single row with
+     * key being the column name
      */
     public static List<Map<String, Object>> getQueryResultMap(String query) {
         executeQuery(query);
@@ -149,8 +150,8 @@ public abstract class DBUtils {
         }
         return rowList;
     }
+
     /**
-     *
      * @param query
      * @return List of columns returned in result set
      */
@@ -170,6 +171,7 @@ public abstract class DBUtils {
         }
         return columns;
     }
+
     private static void executeQuery(String query) {
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -184,6 +186,7 @@ public abstract class DBUtils {
             e.printStackTrace();
         }
     }
+
     public static int getRowCount() throws Exception {
         resultSet.last();
         int rowCount = resultSet.getRow();
