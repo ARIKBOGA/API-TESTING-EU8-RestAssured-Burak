@@ -13,7 +13,7 @@ public class SpartanNegativeGetTest {
 
     @BeforeAll
     public static void init() {
-        RestAssured.baseURI = "http://3.86.210.167:8000";
+        RestAssured.baseURI = "http://54.234.226.200:8000";
     }
 
 

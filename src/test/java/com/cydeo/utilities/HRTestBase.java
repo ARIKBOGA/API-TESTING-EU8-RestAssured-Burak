@@ -8,7 +8,7 @@ public abstract class HRTestBase {
 
     @BeforeAll
     public static void init() {
-        RestAssured.baseURI = "http://3.86.210.167:1000/ords/hr";
+        RestAssured.baseURI = "http://54.234.226.200:1000/ords/hr";
         DBUtils.createConnection();
     }
 
