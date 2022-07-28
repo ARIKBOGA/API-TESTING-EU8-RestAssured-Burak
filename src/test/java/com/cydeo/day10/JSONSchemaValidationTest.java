@@ -60,3 +60,51 @@ public class JSONSchemaValidationTest extends SpartanAuthTestBase {
                 .log().all();
     }
 }
+/*
+        Json Schema Validation
+
+Json Schema is description about Json Data.
+
+{
+"id": 10,
+"name": "Lorenza",
+"gender": "Female",
+"phone": 3312820936
+}
+
+id--> required, integer , ip to 6 digits
+name --> required, string, up to 30char
+gender --> optional ,Male or Female
+phone --> optional long, default 0
+
+
+
+to create json schema in case you need it --> https://www.jsonschema.net/home
+
+to manually test json schema --> https://www.jsonschemavalidator.net/
+
+STEPS for VALIDATION
+1.You will get JSON schema for each endpoint you have that is returning JSON BODY/Payload
+2.Save those .json files under resources folder
+3.Add Json schema validator depedenceny to your pom.xml
+	   <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+4.Then perform required api request to test specific schema example:
+	you are getting one spartan, you will test with singleSpartanSchema.json file
+
+.then()
+        .statusCode(200)
+        .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("SingleSpartanSchema.json"));
+ */
+
+/*
+    JsonSchemaValidator --> class that we use for schema validation
+
+if the file under resources we use matchesJsonSchemaInClasspath("filename") method.
+file name will be enough.
+
+if the file is not under resouserces then we use matchesJsonSchema(new File("file path under project(starts with src/")) to provide file to JsonSchemaValidator class.
+ */

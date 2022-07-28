@@ -22,7 +22,7 @@ public class FormulaOneXMLTest {
                 .pathParam("driver", "alonso")
                 .get("/drivers/{driver}")
                 .then().statusCode(200)
-                //.log().all()
+                .log().all()
                 .extract().response().xmlPath();
 
         String givenName = xmlPath.getString("MRData.DriverTable.Driver.GivenName");
