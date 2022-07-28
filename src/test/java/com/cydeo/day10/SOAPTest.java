@@ -1,18 +1,17 @@
 package com.cydeo.day10;
 
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static io.restassured.RestAssured.given;
 
 public class SOAPTest {
 
-    @Test
-    public void test1() {
-
-        System.out.println("numberToWords(3403) = " + numberToWords(3403));
-        System.out.println("numberToWords(5367408) = " + numberToWords(5367408));
-
+    @ParameterizedTest
+    @ValueSource(longs = {2326, 46324, 18673, 8903})
+    public void test1(long number) {
+        System.out.println(number + "\t: " + numberToWords(number));
     }
 
     public static String numberToWords(long number) {
