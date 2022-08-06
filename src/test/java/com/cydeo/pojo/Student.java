@@ -2,6 +2,7 @@ package com.cydeo.pojo;
 
 import com.cydeo.utilities.POJOUtils;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -89,11 +90,12 @@ class Contact {
     private int contactId;
     private String emailAddress;
     private String phone;
-    private String premanentAddress;
+    @JsonProperty("premanentAddress")  // there is a spelling error on the API side
+    private String permanentAddress;
 
     public Contact() {
         setEmailAddress(POJOUtils.getEmail());
         setPhone(String.valueOf(POJOUtils.getPhoneNumber()));
-        setPremanentAddress(POJOUtils.getStreetAddress());
+        setPermanentAddress(POJOUtils.getStreetAddress());
     }
 }
