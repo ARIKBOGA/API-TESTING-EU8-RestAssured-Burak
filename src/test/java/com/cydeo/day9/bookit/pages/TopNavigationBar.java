@@ -30,7 +30,7 @@ public abstract class TopNavigationBar {
     public void goToSelf() {
         Actions actions = new Actions(Driver.get());
         actions.moveToElement(my).perform();
-        BrowserUtils.waitForVisibility(self,10);
+        BrowserUtils.waitForVisibility(self, 10);
         self.click();
     }
 

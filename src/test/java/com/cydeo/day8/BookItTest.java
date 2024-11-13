@@ -18,6 +18,13 @@ public class BookItTest {
         baseURI = "https://cybertek-reservation-api-qa2.herokuapp.com";
     }
 
+    private static String getToken(String email, String password) {
+        return "Bearer " + given().accept(ContentType.JSON)
+                .queryParams("email", email, "password", password)
+                .get("/sign")
+                .jsonPath().getString("accessToken");
+    }
+
     @DisplayName("GET all campuses")
     @Test
     public void test1() {
@@ -29,13 +36,5 @@ public class BookItTest {
                 .statusCode(200)
                 .log().all();
 
-    }
-
-
-    private static String getToken(String email, String password) {
-        return "Bearer " + given().accept(ContentType.JSON)
-                .queryParams("email", email, "password", password)
-                .get("/sign")
-                .jsonPath().getString("accessToken");
     }
 }

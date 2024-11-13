@@ -15,19 +15,19 @@ public class MockAPI {
 
     @Test
     public void getCustomer() {
-            given()
-                    .get("/customer")
-            .then()
-                    .statusCode(200)
-                    .log().all();
+        given()
+                .get("/customer")
+                .then()
+                .statusCode(200)
+                .log().all();
     }
 
     @Test
     public void getEmployee() {
-            given()
-                    .get("/employee")
-            .then()
-                    .statusCode(401)
-                    .log().body();
+        given()
+                .get("/employee")
+                .then()
+                .statusCode(401)
+                .log().body();
     }
 }

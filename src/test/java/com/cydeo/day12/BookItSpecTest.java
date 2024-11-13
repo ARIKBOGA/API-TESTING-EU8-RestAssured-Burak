@@ -29,7 +29,7 @@ public class BookItSpecTest extends BookItTestBase {
         // verify status code and contentType
         checkMeWithMyReqSpec(userReqSpec(Role.TEACHER), "Janette", "Baskett")
                 .body("id", is(170)); // if we use ValidatableResponse as return type
-                                                    // then we can make additional query after a response spec
+        // then we can make additional query after a response spec
 
     }
 

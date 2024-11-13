@@ -17,11 +17,11 @@ public class SpartanWithJsonPath extends SpartanTestBase {
 
     @DisplayName("Get one spartan with JsonPath")
     @Test
-    public void test1(){
+    public void test1() {
 
-        Map<String,Object> queryMap = new HashMap<>();
-        queryMap.put("gender","Male");
-        queryMap.put("nameContains","Fidole");
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("gender", "Male");
+        queryMap.put("nameContains", "Fidole");
 
         response = RestAssured.given().accept(ContentType.JSON)
                 .and().queryParams(queryMap)

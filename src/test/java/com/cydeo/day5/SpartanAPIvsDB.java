@@ -4,18 +4,13 @@ import com.cydeo.utilities.DBUtils;
 import com.cydeo.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.hamcrest.Matcher;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 
 public class SpartanAPIvsDB extends SpartanTestBase {
@@ -28,9 +23,9 @@ public class SpartanAPIvsDB extends SpartanTestBase {
         //compare
 
         //1. get id,name,gender phone  from database
-        String query =  "SELECT SPARTAN_ID, NAME, GENDER, PHONE\n" +
-                        "FROM SPARTANS\n" +
-                        "WHERE SPARTAN_ID = 15";
+        String query = "SELECT SPARTAN_ID, NAME, GENDER, PHONE\n" +
+                "FROM SPARTANS\n" +
+                "WHERE SPARTAN_ID = 15";
 
         //save data inside the map
         Map<String, Object> dbMap = DBUtils.getRowMap(query);

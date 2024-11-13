@@ -15,21 +15,22 @@ public class SpartanWithXML extends SpartanAuthTestBase {
 
     @DisplayName("GET request to api/spartans and verify XML")
     @Test
-    public void test1(){
+    public void test1() {
         RestAssured.given().accept(ContentType.XML)
-                .auth().basic("admin","admin")
+                .auth().basic("admin", "admin")
                 .get("/api/spartans")
                 .then()
                 .statusCode(200)
                 .contentType("application/xml;charset=UTF-8")
-                .body("List.item[0].name",is("Meade"))
-                .body("List.item[0].gender",is("Male"))
+                .body("List.item[0].name", is("Meade"))
+                .body("List.item[0].gender", is("Male"))
                 .log().all();
 
     }
+
     @DisplayName("GET request to api/spartans with XML path")
     @Test
-    public void test2(){
+    public void test2() {
         XmlPath xmlPath = RestAssured.given().accept(ContentType.XML)
                 .auth().basic("admin", "admin")
                 .get("/api/spartans")

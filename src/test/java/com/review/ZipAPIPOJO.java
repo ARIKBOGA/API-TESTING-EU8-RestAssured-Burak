@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class ZipAPIPOJO {
 }
- class Place{
+
+class Place {
     @JsonProperty("place name")
     public String placeName;
     public String longitude;
@@ -16,7 +17,7 @@ public class ZipAPIPOJO {
     public String latitude;
 }
 
- class Root{
+class Root {
     @JsonProperty("post code")
     public String postCode;
     public String country;

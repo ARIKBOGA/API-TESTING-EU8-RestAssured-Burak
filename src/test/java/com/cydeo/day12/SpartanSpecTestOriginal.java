@@ -9,22 +9,19 @@ import static org.hamcrest.Matchers.is;
 public class SpartanSpecTestOriginal extends SpartanNewBase {
 
 
-
-
-
     @Test
-    public void test3(){
+    public void test3() {
 
 
         given()
                 .spec(userSpec)
-                .queryParams("nameContains","j",
-                        "gender","Female")
-        .when()
+                .queryParams("nameContains", "j",
+                        "gender", "Female")
+                .when()
                 .get("/spartans/search")
-        .then()
+                .then()
                 .spec(responseSpec)
-                .body("numberOfElements",is(6));
+                .body("numberOfElements", is(6));
 
     }
 

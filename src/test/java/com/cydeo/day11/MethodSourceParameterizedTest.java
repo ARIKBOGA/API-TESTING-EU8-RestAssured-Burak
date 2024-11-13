@@ -11,13 +11,6 @@ import java.util.Map;
 public class MethodSourceParameterizedTest {
 
 
-    @ParameterizedTest
-    @MethodSource("getNames")
-    public void testPrintNames(String name) {
-
-        System.out.println("name = " + name);
-    }
-
     public static List<String> getNames() {
         //you can get value from anywhere almost anytype and return to your test
         //DB
@@ -28,6 +21,20 @@ public class MethodSourceParameterizedTest {
         return nameList;
     }
 
+    public static List<Map<String, String>> getExcelData() {
+        //get your file object
+        ExcelUtil vytrackFile = new ExcelUtil("src/test/resources/Vytracktestdata.xlsx", "QA3-short");
+        //return sheet as a alist of map
+        return vytrackFile.getDataList();
+
+    }
+
+    @ParameterizedTest
+    @MethodSource("getNames")
+    public void testPrintNames(String name) {
+
+        System.out.println("name = " + name);
+    }
 
     @ParameterizedTest
     @MethodSource("getExcelData")
@@ -35,14 +42,6 @@ public class MethodSourceParameterizedTest {
 
         System.out.println("FirstName: " + userInfo.get("firstname"));
         System.out.println("LastName: " + userInfo.get("lastname"));
-
-    }
-
-    public static List<Map<String, String>> getExcelData() {
-        //get your file object
-        ExcelUtil vytrackFile = new ExcelUtil("src/test/resources/Vytracktestdata.xlsx", "QA3-short");
-        //return sheet as a alist of map
-        return vytrackFile.getDataList();
 
     }
 

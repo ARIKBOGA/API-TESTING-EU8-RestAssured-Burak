@@ -8,12 +8,6 @@ import static io.restassured.RestAssured.given;
 
 public class SOAPTest {
 
-    @ParameterizedTest
-    @ValueSource(longs = {2326, 46324, 18673, 8903})
-    public void test1(long number) {
-        System.out.println(number + "\t: " + numberToWords(number));
-    }
-
     public static String numberToWords(long number) {
 
         return given().accept(ContentType.XML)
@@ -28,7 +22,13 @@ public class SOAPTest {
                         "</soap:Envelope>")
                 .post("https://www.dataaccess.com/webservicesserver/NumberConversion.wso")
                 .then()
-                //.log().all()
+                .log().all()
                 .extract().xmlPath().getString("soap:Envelope@xmlns:soap");
+    }
+
+    @ParameterizedTest
+    @ValueSource(longs = {2326, 46324, 18673, 8903})
+    public void test1(long number) {
+        System.out.println(number + "\t: " + numberToWords(number));
     }
 }

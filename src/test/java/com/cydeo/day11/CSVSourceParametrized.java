@@ -7,7 +7,6 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.hamcrest.Matchers.*;
 
 public class CSVSourceParametrized {
 
@@ -38,7 +37,9 @@ public class CSVSourceParametrized {
                 .pathParam("state", state)
                 .pathParam("city", city)
                 .get("https://api.zippopotam.us/us/{state}/{city}")
-                .then().statusCode(200)
+                .then()
+                .log().body()
+                .statusCode(200)
                 .extract().jsonPath().getList("places.'place name'");
 
         cities.forEach(each -> {

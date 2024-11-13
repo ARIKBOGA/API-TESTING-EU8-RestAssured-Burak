@@ -13,13 +13,13 @@ public class OldRestAssuredTest extends SpartanNewBase {
 
     @DisplayName("GET req. to spartan API to get ALL")
     @Test
-    public void test1(){
+    public void test1() {
         given().contentType(ContentType.JSON)
-                .auth().basic("admin","admin")
+                .auth().basic("admin", "admin")
                 .log().all()
                 .get("/spartans")
                 .then().statusCode(200)
-                .body("id[0]",is(1))
+                .body("id[0]", is(1))
                 .log().all();
     }
 
@@ -35,17 +35,17 @@ public class OldRestAssuredTest extends SpartanNewBase {
 
     @DisplayName("OLD structure GET req. to spartan API to get ALL")
     @Test
-    public void test2(){
-                given().contentType(ContentType.JSON)
-                    .auth().basic("admin","admin")
+    public void test2() {
+        given().contentType(ContentType.JSON)
+                .auth().basic("admin", "admin")
                 .expect()
-                    .statusCode(200)
-                    .body("id[0]",is(10))
-                    .body("id[4]",is(5))
-                    .body("id[7]",is(180))
-                    .contentType(ContentType.XML)
-                    .logDetail(LogDetail.ALL) // log way with using expect method
+                .statusCode(200)
+                .body("id[0]", is(10))
+                .body("id[4]", is(5))
+                .body("id[7]", is(180))
+                .contentType(ContentType.XML)
+                .logDetail(LogDetail.ALL) // log way with using expect method
                 .when()
-                        .get("/spartans");
+                .get("/spartans");
     }
 }

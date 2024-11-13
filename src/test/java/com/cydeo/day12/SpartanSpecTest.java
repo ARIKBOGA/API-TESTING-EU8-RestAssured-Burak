@@ -19,7 +19,7 @@ public class SpartanSpecTest extends SpartanNewBase {
         given()
                 .spec(requestSpec)
                 .get("/spartans")
-        .then()
+                .then()
                 .spec(responseSpec);
 
     }
@@ -31,9 +31,9 @@ public class SpartanSpecTest extends SpartanNewBase {
         given()
                 .spec(requestSpec)
                 .pathParam("id", 12)
-        .when()
+                .when()
                 .get("/spartans/{id}")
-        .then()
+                .then()
                 .spec(responseSpec);
 
     }

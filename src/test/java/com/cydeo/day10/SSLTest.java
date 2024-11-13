@@ -1,25 +1,26 @@
 package com.cydeo.day10;
 
-import static io.restassured.RestAssured.*;
 import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.given;
 
 public class SSLTest {
     @Test
-    public void relaxedHTTPS(){
+    public void relaxedHTTPS() {
 
-       given()
-               .relaxedHTTPSValidation() // this method allows us to send a request to an API which is doesn't have an SSL cert.
-               .get("https://untrusted-root.badssl.com")
-               .then().log().all();
+        given()
+                .relaxedHTTPSValidation() // this method allows us to send a request to an API which is doesn't have an SSL cert.
+                .get("https://untrusted-root.badssl.com")
+                .then().log().all();
 
     }
 
 
     @Test
-    public void keyStore(){
+    public void keyStore() {
 
         given()
-                .keyStore("pathtofile","password")
+                .keyStore("pathtofile", "password")
                 .when().get("apiurl");
 
     }

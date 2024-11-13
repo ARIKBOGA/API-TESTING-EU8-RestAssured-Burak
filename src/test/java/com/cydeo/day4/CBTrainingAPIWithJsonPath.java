@@ -16,14 +16,14 @@ import static io.restassured.RestAssured.baseURI;
 
 public class CBTrainingAPIWithJsonPath {
 
+    private static Response response;
+    private static List<String> stringList;
+    private static JsonPath jsonPath;
+
     @BeforeAll
     public static void init() {
         baseURI = "http://api.cybertektraining.com";
     }
-
-    private static Response response;
-    private static List<String> stringList;
-    private static JsonPath jsonPath;
 
     @DisplayName("Get request to individual student")
     @Test
@@ -44,8 +44,8 @@ public class CBTrainingAPIWithJsonPath {
                 using JsonPath
              */
 
-        Map<String,Object> pathMap = new HashMap<>();
-        pathMap.put("id",32801);
+        Map<String, Object> pathMap = new HashMap<>();
+        pathMap.put("id", 32801);
 
         response = RestAssured
                 .given()
@@ -58,7 +58,7 @@ public class CBTrainingAPIWithJsonPath {
 
         Assertions.assertEquals(200, response.statusCode());
         Assertions.assertEquals("application/json;charset=UTF-8", response.contentType());
-        Assertions.assertTrue( response.headers().get("Content-Encoding").toString().endsWith("gzip"));
+        Assertions.assertTrue(response.headers().get("Content-Encoding").toString().endsWith("gzip"));
         Assertions.assertTrue(response.headers().exist());
 
         Assertions.assertEquals("Vera", response.path("students[0].firstName"));

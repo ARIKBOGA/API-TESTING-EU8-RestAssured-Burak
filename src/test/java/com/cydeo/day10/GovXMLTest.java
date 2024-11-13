@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class GovXMLTest {
 
     @Test
-    public void test1(){
+    public void test1() {
         //send a get request to
         //https://data.ct.gov/api/views/qm34-pq7e/rows.xml
         //get all the years

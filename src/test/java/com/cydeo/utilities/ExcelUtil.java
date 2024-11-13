@@ -85,7 +85,7 @@ public class ExcelUtil {
             // get each row
             Row row = workSheet.getRow(i);
             // create map of the row using the column and value
-            // column map key, cell value --> map bvalue
+            // column map key, cell value --> map value
             Map<String, String> rowMap = new HashMap();
             for (Cell cell : row) {
                 int columnIndex = cell.getColumnIndex();

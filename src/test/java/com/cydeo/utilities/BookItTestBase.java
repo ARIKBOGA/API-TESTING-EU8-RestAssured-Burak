@@ -11,7 +11,6 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
 
 
-
 public class BookItTestBase {
 
     protected static RequestSpecification teacherReqSpec;

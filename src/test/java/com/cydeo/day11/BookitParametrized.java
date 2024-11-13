@@ -13,30 +13,30 @@ import static io.restassured.RestAssured.given;
 public class BookitParametrized {
 
 
-        public static List<Map<String,String>> getExcelData(){
+    public static List<Map<String, String>> getExcelData() {
 
-            ExcelUtil bookitFile = new ExcelUtil("src/test/resources/BookItQa3.xlsx","QA3");
+        ExcelUtil bookitFile = new ExcelUtil("src/test/resources/BookItQa3.xlsx", "QA3");
 
-            return bookitFile.getDataList();
-        }
+        return bookitFile.getDataList();
+    }
 
-        @ParameterizedTest
-        @MethodSource("getExcelData")
-        public void bookItTest(Map<String,String> user){
-            //System.out.println("user.get(\"email\") = " + user.get("email"));
-            //System.out.println("user.get(\"password\") = " + user.get("password"));
+    @ParameterizedTest
+    @MethodSource("getExcelData")
+    public void bookItTest(Map<String, String> user) {
+        //System.out.println("user.get(\"email\") = " + user.get("email"));
+        //System.out.println("user.get(\"password\") = " + user.get("password"));
 
-            String accessToken = given()
-                    .accept(ContentType.JSON)
-                    .queryParams(user) //I pass map directly because query param keys and map keys are equal
-                    .get("https://cybertek-reservation-api-qa3.herokuapp.com/sign")
-                    .then()
-                    .statusCode(200)
-                    .extract().jsonPath().getString("accessToken");
+        String accessToken = given()
+                .accept(ContentType.JSON)
+                .queryParams(user) //I pass map directly because query param keys and map keys are equal
+                .get("https://cybertek-reservation-api-qa3.herokuapp.com/sign")
+                .then()
+                .statusCode(200)
+                .extract().jsonPath().getString("accessToken");
 
-            System.out.println("accessToken = " + accessToken);
+        System.out.println("accessToken = " + accessToken);
 
 
-        }
+    }
 
 }

@@ -9,6 +9,11 @@ public class TestLifeCycleAnnotations {
         System.out.println("Before all is running");
     }
 
+    @AfterAll
+    public static void close() {
+        System.out.println("After all is running");
+    }
+
     //beforeMethod is testNg version of beforeEach, same logic
     @BeforeEach
     public void initEach() {
@@ -29,10 +34,5 @@ public class TestLifeCycleAnnotations {
     @Test
     public void test2() {
         System.out.println("Test 2 is running");
-    }
-
-    @AfterAll
-    public static void close() {
-        System.out.println("After all is running");
     }
 }

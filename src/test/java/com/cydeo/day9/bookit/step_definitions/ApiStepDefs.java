@@ -18,12 +18,12 @@ import static io.restassured.RestAssured.given;
 
 public class ApiStepDefs {
 
+    private static final String QUERY = "select * from users where id=1202;";
     private static Response response;
     private static String studentEmail;
     private static String studentPassword;
     private static String token;
     private static String emailGlobal;
-    private static final String QUERY = "select * from users where id=1202;";
     private static JsonPath jsonPath;
     private static Map<String, Object> queryMap;
 
@@ -105,7 +105,6 @@ public class ApiStepDefs {
                 .when()
                 .post(ConfigurationReader.get("base_url") + path)
                 .then().log().all().extract().response();
-
 
 
     }

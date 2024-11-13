@@ -1,0 +1,1 @@
+GET https://jsonmock.hackerrank.com/api/moviesdata/search/?Title={{$maze}}
