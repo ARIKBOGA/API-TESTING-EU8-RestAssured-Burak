@@ -24,6 +24,8 @@ public class SimpleGetRequest {
 
         //System.out.println(response.prettyPrint());
         //response.as(Map.class);
+
+
         response.headers().asList().forEach(System.out::println);
     }
 
